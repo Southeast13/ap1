@@ -1,0 +1,14 @@
+
+workflows:
+  android-build:
+    name: Android build (assembleDebug)
+    environment:
+      vars:
+        JAVA_HOME: /Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+    scripts:
+      - name: Build debug APK
+        script: |
+          chmod +x ./gradlew
+          ./gradlew assembleDebug --no-daemon
+    artifacts:
+      - app/build/outputs/**/*.apk
